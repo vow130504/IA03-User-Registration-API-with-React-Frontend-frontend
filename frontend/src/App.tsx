@@ -22,7 +22,7 @@ const AuthCard: React.FC<{
   children: React.ReactNode;
   footer?: React.ReactNode;
 }> = ({ title, children, footer }) => (
-  <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-200 dark:border-gray-700">
+  <div className="bg-white/80 dark:bg-gray-800/70 backdrop-blur p-8 rounded-2xl shadow-2xl w-full max-w-md border border-white/40 dark:border-white/10">
     <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">
       {title}
     </h2>
@@ -55,7 +55,7 @@ const AuthInput: React.FC<{
       type={type}
       id={id}
       className={[
-        'w-full p-3 rounded-lg border bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500',
+        'w-full p-3 rounded-lg border bg-white/60 dark:bg-gray-700/60 backdrop-blur text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500',
         errorMessage
           ? 'border-red-500 focus:ring-red-500'
           : 'border-gray-300 dark:border-gray-600',
@@ -82,7 +82,7 @@ const AuthButton: React.FC<{
   <button
     type="submit"
     disabled={disabled}
-    className="w-full bg-blue-600 disabled:opacity-60 disabled:cursor-not-allowed text-white p-3 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition-colors duration-200"
+    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 disabled:opacity-60 disabled:cursor-not-allowed text-white p-3 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition-colors duration-200"
   >
     {isLoading ? 'Đang xử lý...' : children}
   </button>
@@ -284,57 +284,74 @@ const SignUpPage: React.FC = () => {
 
 // Trang chủ
 const HomePage: React.FC = () => (
-  <div className="text-center">
-    <h1 className="text-5xl font-bold mb-4">Chào mừng bạn!</h1>
-    <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
-      Đây là trang chủ của ứng dụng.
-    </p>
-    <div className="space-x-4">
-      <Link
-        to="/login"
-        className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-      >
-        Đăng nhập
-      </Link>
-      <Link
-        to="/signup"
-        className="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-      >
-        Đăng ký
-      </Link>
+  <div className="relative isolate w-full overflow-hidden rounded-3xl shadow-lg">
+    <div
+      className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1506765515384-028b60a970df?q=80&w=1600&auto=format&fit=crop')",
+      }}
+      role="img"
+      aria-label="Background"
+    />
+    <div className="absolute inset-0 z-10 bg-gradient-to-br from-white/80 via-white/40 to-white/20 dark:from-gray-900/80 dark:via-gray-900/50 dark:to-gray-900/20 backdrop-blur-[2px] pointer-events-none" />
+    <div className="relative z-20 text-center py-16 px-6">
+      <h1 className="text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+        Chào mừng bạn!
+      </h1>
+      <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
+        Đây là trang chủ của ứng dụng.
+      </p>
+      <div className="space-x-4">
+        <Link
+          to="/login"
+          className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-colors shadow"
+        >
+          Đăng nhập
+        </Link>
+        <Link
+          to="/signup"
+          className="px-6 py-3 bg-white/70 dark:bg-gray-700/60 backdrop-blur text-gray-900 dark:text-white rounded-lg font-semibold border border-white/40 dark:border-white/10 hover:bg-white/80 dark:hover:bg-gray-700/70 transition-colors"
+        >
+          Đăng ký
+        </Link>
+      </div>
     </div>
   </div>
 );
 
 // Thành phần Layout chính
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+  <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-800 text-gray-900 dark:text-white">
     {/* Thanh điều hướng */}
-    <nav className="bg-white dark:bg-gray-800 shadow-md">
+    <nav className="bg-white/70 dark:bg-gray-800/60 backdrop-blur shadow-md border-b border-white/40 dark:border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <Link to="/" className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-              MyApp
+            <Link
+              to="/"
+              className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400"
+            >
+              RegisterApp
             </Link>
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               <Link
                 to="/"
-                className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-700/50 px-3 py-2 rounded-md text-sm font-medium"
               >
                 Trang chủ
               </Link>
               <Link
                 to="/login"
-                className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-700/50 px-3 py-2 rounded-md text-sm font-medium"
               >
                 Đăng nhập
               </Link>
               <Link
                 to="/signup"
-                className="bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-700"
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:from-blue-700 hover:to-indigo-700"
               >
                 Đăng ký
               </Link>
