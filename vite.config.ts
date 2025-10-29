@@ -9,5 +9,6 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-  }
+  },
+  base:'/IA03-User-Registration-API-with-React-Frontend-frontend',
 })

@@ -23,7 +23,7 @@ const Layout: React.FC<{ children: React.ReactNode; user: AuthUser; onLogout: ()
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
             <Link to="/" className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-              MyApp
+              RegisterApp
             </Link>
           </div>
           <div className="hidden md:block">
