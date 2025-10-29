@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import HomePage from '@/components/pages/HomePage';
@@ -129,6 +129,7 @@ export default function App() {
       <BrowserRouter>
         <Layout user={user} onLogout={handleLogout}>
           <Routes>
+            <Route path="/" element={<Navigate to="/homepage" replace />} />
             <Route path="/homepage" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
