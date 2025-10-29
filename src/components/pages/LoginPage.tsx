@@ -80,6 +80,10 @@ const LoginPage: React.FC = () => {
           register={register('password', {
             required: 'Vui lòng nhập mật khẩu',
             minLength: { value: 8, message: 'Ít nhất 8 ký tự' },
+            pattern: {
+              value: /[^A-Za-z0-9]/,
+              message: 'Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt',
+            },
           })}
           errorMessage={errors.password?.message as string}
         />
