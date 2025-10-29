@@ -61,6 +61,7 @@ const LoginPage: React.FC = () => {
           type="email"
           label="Email"
           placeholder="ban@email.com"
+          autoComplete="email"
           register={register('email', {
             required: 'Vui lòng nhập email',
             pattern: {
@@ -75,6 +76,7 @@ const LoginPage: React.FC = () => {
           type="password"
           label="Mật khẩu"
           placeholder="••••••••"
+          autoComplete="current-password"
           register={register('password', {
             required: 'Vui lòng nhập mật khẩu',
             minLength: { value: 8, message: 'Ít nhất 8 ký tự' },
@@ -87,12 +89,12 @@ const LoginPage: React.FC = () => {
           </AuthButton>
         </div>
         {mutation.isSuccess && (
-          <p className="mt-4 text-green-600 text-sm text-center" role="status">
+          <p className="mt-4 text-green-600 text-sm text-center" role="status" aria-live="polite">
             Đăng nhập thành công! Đang chuyển hướng...
           </p>
         )}
         {mutation.isError && (
-          <p className="mt-4 text-red-600 text-sm text-center" role="alert">
+          <p className="mt-4 text-red-600 text-sm text-center" role="alert" aria-live="assertive">
             {(mutation.error as Error)?.message || 'Đăng nhập thất bại'}
           </p>
         )}

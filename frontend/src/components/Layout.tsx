@@ -37,11 +37,28 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
             </div>
           </div>
         </div>
+        {/* Mobile quick actions */}
+        <div className="md:hidden pb-3">
+          <div className="flex gap-2">
+            <Link
+              to="/login"
+              className="flex-1 text-center px-3 py-2 rounded-md text-sm font-medium text-gray-800 dark:text-gray-200 bg-white/60 dark:bg-gray-700/60 border border-white/40 dark:border-white/10"
+            >
+              Đăng nhập
+            </Link>
+            <Link
+              to="/signup"
+              className="flex-1 text-center px-3 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600"
+            >
+              Đăng ký
+            </Link>
+          </div>
+        </div>
       </div>
     </nav>
 
     <main
-      className="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
+      className="flex items-center justify-center py-4 sm:py-8 px-4 sm:px-6 lg:px-8"
       style={{ minHeight: 'calc(100vh - 64px)' }}
     >
       {children}
