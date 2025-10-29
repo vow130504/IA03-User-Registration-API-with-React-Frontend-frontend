@@ -29,7 +29,7 @@ const Layout: React.FC<{ children: React.ReactNode; user: AuthUser; onLogout: ()
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               <Link
-                to="/"
+                to="/homepage"
                 className="text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
               >
                 Trang chủ
@@ -132,7 +132,7 @@ export default function App() {
       <BrowserRouter>
         <Layout user={user} onLogout={handleLogout}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/homepage" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
           </Routes>

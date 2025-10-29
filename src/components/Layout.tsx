@@ -17,7 +17,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               <Link
-                to="/"
+                to="/homepage"
                 className="text-gray-700 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-gray-700/50 px-3 py-2 rounded-md text-sm font-medium"
               >
                 Trang chủ
